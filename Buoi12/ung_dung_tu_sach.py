@@ -72,7 +72,7 @@ class UngDungTuSach(tk.Tk):
         db.them_sach(ten_sach, tac_gia, the_loai)
         self.o_nhap_ten_sach.delete(0, tk.END)
         self.o_nhap_tac_gia.delete(0, tk.END)
-        self.tai_lai_danh_sach_sach()
+        self.tai_lai_danh_sach()
         messagebox.showinfo("Thanh cong", f"Da them sach: {ten_sach}")
 
     def xu_ly_xoa_sach(self):
@@ -82,7 +82,7 @@ class UngDungTuSach(tk.Tk):
             return
         id_sach = self.danh_sach_hien_tai[lua_chon[0]][0]
         db.xoa_sach(id_sach)
-        self.tai_lai_danh_sach_sach()
+        self.tai_lai_danh_sach()
 
     def xu_ly_danh_dau_da_doc(self):
         lua_chon = self.listbox_sach.curselection()
@@ -91,7 +91,7 @@ class UngDungTuSach(tk.Tk):
             return
         id_sach = self.danh_sach_hien_tai[lua_chon[0]][0]
         db.danh_dau_da_doc(id_sach)
-        self.tai_lai_danh_sach_sach()
+        self.tai_lai_danh_sach()
 
     def xu_ly_thong_ke(self):
         du_lieu = db.thong_ke_theo_the_loai()

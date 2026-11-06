@@ -1,7 +1,6 @@
 import os
 import sqlite3
 
-# Lấy đường dẫn thư mục hiện tại chứa file csdl_sach.py
 THU_MUC_HIEN_TAI = os.path.dirname(os.path.abspath(__file__))
 TEN_FILE_CSDL = os.path.join(THU_MUC_HIEN_TAI, "tu_sach.db")
 
@@ -11,6 +10,8 @@ def ket_noi_csdl():
 def tao_bang_neu_chua_co():
     ket_noi = ket_noi_csdl()
     con_tro = ket_noi.cursor()
+    # Xóa bảng cũ nếu muốn reset sạch dữ liệu khi chạy lại test (tùy chọn)
+    # con_tro.execute("DROP TABLE IF EXISTS sach")
     con_tro.execute("""
         CREATE TABLE IF NOT EXISTS sach (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
