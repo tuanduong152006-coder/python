@@ -16,7 +16,7 @@ class UngDungTuSach(tk.Tk):
         
         db.tao_bang_neu_chua_co()
         self.khoi_tao_giao_dien()
-        self.tai_lai_danh_sach_sach()
+        self.tai_lai_danh_sach()
 
     def khoi_tao_giao_dien(self):
         khung_nhap = tk.Frame(self)
@@ -52,14 +52,14 @@ class UngDungTuSach(tk.Tk):
         tk.Button(khung_nut, text="Xoa sach", command=self.xu_ly_xoa_sach).grid(row=0, column=1, padx=5)
         tk.Button(khung_nut, text="Thong ke theo the loai", command=self.xu_ly_thong_ke).grid(row=0, column=2, padx=5)
 
-    def tai_lai_danh_sach_sach(self):
+    def tai_lai_danh_sach(self):
         self.listbox_sach.delete(0, tk.END)
         self.danh_sach_hien_tai = db.lay_toan_bo_sach()
         for sach in self.danh_sach_hien_tai:
             id_sach, ten_sach, tac_gia, the_loai, da_doc = sach
-            trang_thai = "[Da doc]" if da_doc == 1 else "[Chua doc]"
-            self.listbox_sach.insert(tk.END, f"{trang_thai} {ten_sach} - {tac_gia} ({the_loai})")
-
+            trang_thai = "[Đã đọc]" if da_doc == 1 else "[Chưa đọc]"
+            chuoi_hien_thi = f"{trang_thai} {ten_sach} - {tac_gia} - ({the_loai})"
+            self.listbox_sach.insert(tk.END, chuoi_hien_thi)
     def xu_ly_them_sach(self):
         ten_sach = self.o_nhap_ten_sach.get().strip()
         tac_gia = self.o_nhap_tac_gia.get().strip()
