@@ -10,8 +10,6 @@ def ket_noi_csdl():
 def tao_bang_neu_chua_co():
     ket_noi = ket_noi_csdl()
     con_tro = ket_noi.cursor()
-    # Xóa bảng cũ nếu muốn reset sạch dữ liệu khi chạy lại test (tùy chọn)
-    # con_tro.execute("DROP TABLE IF EXISTS sach")
     con_tro.execute("""
         CREATE TABLE IF NOT EXISTS sach (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
